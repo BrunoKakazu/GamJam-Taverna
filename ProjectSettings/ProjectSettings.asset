@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 1ac1f3ddd1b4a55468d1f205e35d42fb
+  productGUID: 83d937c13bf8dea4caaab443e8238158
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -675,25 +675,7 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
-  scriptingDefineSymbols:
-    Android: 
-    EmbeddedLinux: 
-    GameCoreScarlett: 
-    GameCoreXboxOne: 
-    Kepler: 
-    LinuxHeadlessSimulation: 
-    Nintendo Switch: 
-    Nintendo Switch 2: 
-    PS4: 
-    PS5: 
-    QNX: 
-    Standalone: 
-    VisionOS: 
-    WebGL: 
-    Windows Store Apps: 
-    XboxOne: 
-    iPhone: 
-    tvOS: 
+  scriptingDefineSymbols: {}
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -792,10 +774,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: a86c4e45-b0a3-44c7-a7da-da6d126e2197
+  cloudProjectId: c30cfc69-84cc-434e-9051-c270b336d400
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Taverna
+  projectName: Taverna 2026-06-18_01-13-39
   organizationId: brunokakazu98
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
