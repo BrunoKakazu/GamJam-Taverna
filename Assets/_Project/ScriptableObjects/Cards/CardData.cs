@@ -1,0 +1,13 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "Card_", menuName = "Scriptable Objects/Card/Common")]
+public class CardData : ScriptableObject
+{
+    [Header("IdCarta")]
+    public string cardName; //Dá nome à carta
+    //public Sprite cardSprite; //Para escolher o sprite da cartinha
+
+    [Header("Valor")]
+    public int value; //Dá o valor à carta
+    public bool isAce; //Verifica se a carta é o as, que pode valer 1 ou 11
+}
