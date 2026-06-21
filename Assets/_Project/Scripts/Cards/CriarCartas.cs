@@ -14,9 +14,10 @@ public class CriarCartas : MonoBehaviour
 
     private void Start()
     {
-        GameObject carta;
-        carta = CriarCarta(0);
-        Instantiate(carta);
+        // Teste
+        //GameObject carta;
+        //carta = CriarCarta(0);
+        //Instantiate(carta);
     }
 
     // Criação da carta
@@ -24,6 +25,7 @@ public class CriarCartas : MonoBehaviour
     {
         GameObject carta;
 
+        // Setagem dos valores
         valores.SetId(cartasData[index].cardName);
         valores.SetValue(cartasData[index].value);
         valores.SetIsAce(cartasData[index].isAce);
