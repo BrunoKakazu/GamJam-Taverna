@@ -273,6 +273,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401588350}
   m_CullTransparentMesh: 1
+--- !u!1 &1610071305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1610071307}
+  - component: {fileID: 1610071306}
+  m_Layer: 0
+  m_Name: CriarCartas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1610071306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610071305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a44eb2b728d0a4db3f0012ad59284a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CriarCartas
+  prefabCarta: {fileID: 6313418102677351824, guid: c5ab55ddff971c043b007074643cea5a, type: 3}
+  valores: {fileID: 6978250103721482009, guid: c5ab55ddff971c043b007074643cea5a, type: 3}
+  cartasData:
+  - {fileID: 11400000, guid: df57e63b802ec3244819b2c98d1ef310, type: 2}
+  - {fileID: 11400000, guid: d3b8320ae50704248954570ffa672d89, type: 2}
+  - {fileID: 11400000, guid: a50cae2f3b53d5c4185da07059e2d60f, type: 2}
+  - {fileID: 11400000, guid: 97d35e89d341f3e409ee247fdb74d81b, type: 2}
+  - {fileID: 11400000, guid: 1ae2ef6d19406f9419173762838f65a1, type: 2}
+  - {fileID: 11400000, guid: d24436bdf9621774da0127c029c7a6e4, type: 2}
+  - {fileID: 11400000, guid: ea01dbb14428a4b43ac5d39abc688be8, type: 2}
+  - {fileID: 11400000, guid: b4e6008f66fb5444a97ebe440df296c1, type: 2}
+  - {fileID: 11400000, guid: e87a8042068e2ee4997973a759c37bb7, type: 2}
+  - {fileID: 11400000, guid: 2e917165ecb7b984d82ca83a4749648f, type: 2}
+  - {fileID: 11400000, guid: 19891c631ea96de459aee22fd6d2fef9, type: 2}
+  - {fileID: 11400000, guid: 971160bca370bf046b68a6a092ab1ba2, type: 2}
+  - {fileID: 11400000, guid: bfb1965eceb97b7478274ca406b2cc0a, type: 2}
+--- !u!4 &1610071307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610071305}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1720.3479, y: 572.18317, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1832016011
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,3 +681,4 @@ SceneRoots:
   - {fileID: 1926772894}
   - {fileID: 1832016015}
   - {fileID: 10553300}
+  - {fileID: 1610071307}

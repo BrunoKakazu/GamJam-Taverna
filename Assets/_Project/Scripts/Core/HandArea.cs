@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HandArea : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class HandArea : MonoBehaviour
 
     private void Start()
     {
-        Hand(prefabCarta, 4);
+        //Hand(prefabCarta, 4);
     }
 
     public void Hand(GameObject card, int quantityCards)
@@ -23,12 +22,8 @@ public class HandArea : MonoBehaviour
 
         while(quantity < quantityCards)
         {
-            
-            mao = Instantiate(card, _handPlayer.transform);
 
-            mao.GetComponentInChildren<TextMeshProUGUI>().text = $"{_cardsData[quantity].value}";
-
-            //prefabCarta.GetComponent<TextMeshProUGUI>().text = $"{_cardsData[quantity].value}";
+            mao = CriarCartas.Instance.CriarCarta(quantity);
 
             _cards.Add(mao);
 
