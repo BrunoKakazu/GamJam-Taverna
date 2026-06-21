@@ -5,11 +5,12 @@ public class DeckScript : MonoBehaviour
 {
     public List<Sprite> cardSprites;
     public List<CardData> cardDatas;
+    [SerializeField] private GameObject cardPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
