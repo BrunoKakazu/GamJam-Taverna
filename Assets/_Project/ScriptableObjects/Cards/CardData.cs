@@ -1,13 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Card_", menuName = "Scriptable Objects/Card/Common")]
 public class CardData : ScriptableObject
 {
+
     [Header("IdCarta")]
-    public string cardName; //Dá nome à carta
-    //public Sprite cardSprite; //Para escolher o sprite da cartinha
+    public string cardName; //Dï¿½ nome ï¿½ carta
+    public Sprite cardSprite; //Para escolher o sprite da cartinha
+    
 
     [Header("Valor")]
-    public int value; //Dá o valor à carta
-    public bool isAce; //Verifica se a carta é o as, que pode valer 1 ou 11
+    public int value; //Dï¿½ o valor ï¿½ carta
+    public bool isAce; //Verifica se a carta ï¿½ o as, que pode valer 1 ou 11
+
+
 }
