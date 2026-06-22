@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CriarCartas : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CriarCartas : MonoBehaviour
     [Header("Dados da carta")]
     [SerializeField] private GameObject prefabCarta;
     [SerializeField] private ValoresCartas valores;
+    [SerializeField] private Sprite versoSprite;
 
     [Header("Referência dos dados")]
     [SerializeField] private List<CardData> cartasData;
@@ -26,11 +28,13 @@ public class CriarCartas : MonoBehaviour
         GameObject carta;
 
         // Setagem dos valores
-        valores.SetId(cartasData[index].cardName);
+        valores.SetId(cartasData[index].cardID);
         valores.SetValue(cartasData[index].value);
         valores.SetIsAce(cartasData[index].isAce);
 
-        carta = Instantiate(prefabCarta);
+        //carta = Instantiate(prefabCarta);
+        carta = prefabCarta;
+        carta.GetComponentInChildren<Image>().sprite = versoSprite;
 
         return carta;
     }

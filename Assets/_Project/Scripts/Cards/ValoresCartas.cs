@@ -8,7 +8,7 @@ public class ValoresCartas : MonoBehaviour
     private const bool DESATIVADO = false;
 
     [Header("Dados da carta")]
-    [SerializeField] private string id;
+    [SerializeField] private int id;
     [SerializeField] private int value;
     [SerializeField] private bool isAce;
 
@@ -17,7 +17,7 @@ public class ValoresCartas : MonoBehaviour
     [SerializeField] private GameObject verso;
 
 
-    public void SetId(string id)
+    public void SetId(int id)
     {
         this.id = id;
     }
@@ -37,7 +37,7 @@ public class ValoresCartas : MonoBehaviour
         return isAce;
     }
 
-    public string GetId()
+    public int GetId()
     {
         return id;
     }
