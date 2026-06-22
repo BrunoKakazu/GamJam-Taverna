@@ -16,7 +16,7 @@ public class CardScript : MonoBehaviour
     {
         cardData = deck.GiveCard();
         Debug.Log(cardData.value);
-        cardSprite.GetComponent<Image>().sprite = deck.cardSprites[cardData.value];
+        cardSprite.GetComponent<Image>().sprite = deck.cardSprites[cardData.cardID];
     }
 
     // Update is called once per frame
