@@ -10,7 +10,7 @@ public class CardScript : MonoBehaviour
     [SerializeField] private GameObject cardSprite;
     [SerializeField] private DeckScript deckScript;
 
-    private bool isFliped;
+    [SerializeField] private bool isFliped;
 
     void Awake()
     {
@@ -21,18 +21,16 @@ public class CardScript : MonoBehaviour
     {   
         cardData = deckScript.GiveCard();
         cardSprite.GetComponent<Image>().sprite = deckScript.cardSprites[cardData.cardID];
-
-        CardFlip();
     }
 
     void Update()
     {
-        
+        CardFlip();
     }
 
     private void CardFlip()
     {
-        if (!isFliped)
+        if (isFliped)
         {
             cardSprite.GetComponent<Image>().sprite = deckScript.cardSprites[0];
         }
