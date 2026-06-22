@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardScript
   cardData: {fileID: 0}
-  image: {fileID: 3510661329647886847}
-  deck: {fileID: 450156700726046100, guid: 46a05da4dff15094aad67b6991c4448d, type: 3}
+  cardSprite: {fileID: 3510661329647886847}
+  deck: {fileID: 9126904954580411376, guid: 46a05da4dff15094aad67b6991c4448d, type: 3}
 --- !u!222 &2460809618958137337
 CanvasRenderer:
   m_ObjectHideFlags: 0
