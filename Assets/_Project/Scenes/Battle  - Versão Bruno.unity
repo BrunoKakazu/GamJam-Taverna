@@ -1437,8 +1437,7 @@ MonoBehaviour:
   - {fileID: -7353156081931564349, guid: 537ac55a6c2bb41438dab568f9e45e1a, type: 3}
   - {fileID: 4282747062302522660, guid: 7f0f4f6f77a90f04f97e0755edf68be5, type: 3}
   - {fileID: -3644031783054025470, guid: c0ab680754aa6cf4c9b231ee7c849da2, type: 3}
-  baralho:
-  - {fileID: 0}
+  baralho: []
 --- !u!4 &1994870183
 Transform:
   m_ObjectHideFlags: 0
