@@ -7,22 +7,39 @@ public class CardScript : MonoBehaviour
 {
     [SerializeField] private CardData cardData;
 
-    public GameObject cardSprite;
-    public DeckScript deck;
+    [SerializeField] private GameObject cardSprite;
+    [SerializeField] private DeckScript deckScript;
 
+    private bool isFliped;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        cardData = deck.GiveCard();
-        Debug.Log(cardData.value);
-        cardSprite.GetComponent<Image>().sprite = deck.cardSprites[cardData.cardID];
+        deckScript = FindObjectsByType<DeckScript>(FindObjectsSortMode.None)[0];
     }
 
-    // Update is called once per frame
+    void Start()
+    {   
+        cardData = deckScript.GiveCard();
+        cardSprite.GetComponent<Image>().sprite = deckScript.cardSprites[cardData.cardID];
+
+        CardFlip();
+    }
+
     void Update()
     {
         
+    }
+
+    private void CardFlip()
+    {
+        if (!isFliped)
+        {
+            cardSprite.GetComponent<Image>().sprite = deckScript.cardSprites[0];
+        }
+        else
+        {
+            cardSprite.GetComponent<Image>().sprite = deckScript.cardSprites[cardData.cardID];
+        }
     }
 
 

@@ -8,7 +8,7 @@ public class ValoresCartas : MonoBehaviour
     private const bool DESATIVADO = false;
 
     [Header("Dados da carta")]
-    [SerializeField] private string id;
+    [SerializeField] private int id;
     [SerializeField] private int value;
     [SerializeField] private bool isAce;
 
@@ -16,8 +16,13 @@ public class ValoresCartas : MonoBehaviour
     [Header("Verso")]
     [SerializeField] private GameObject verso;
 
+    private void OnEnable()
+    {
+        //this.gameObject.GetComponentInChildren<Image>().sprite = 
+    }
 
-    public void SetId(string id)
+
+    public void SetId(int id)
     {
         this.id = id;
     }
@@ -37,7 +42,7 @@ public class ValoresCartas : MonoBehaviour
         return isAce;
     }
 
-    public string GetId()
+    public int GetId()
     {
         return id;
     }
@@ -45,6 +50,11 @@ public class ValoresCartas : MonoBehaviour
     public int GetValue()
     {
         return value;
+    }
+
+    public GameObject GetVerso()
+    {
+        return verso;
     }
 
     public void AtivarOuDesativarVerso()
