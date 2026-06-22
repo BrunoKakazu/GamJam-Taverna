@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Card_Jack
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Valete
-  value: 10
+  cardSprite: {fileID: 0}
+  value: 11
   isAce: 0

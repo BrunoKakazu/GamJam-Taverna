@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Card_King
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Rei
-  value: 10
+  cardSprite: {fileID: 0}
+  value: 13
   isAce: 0

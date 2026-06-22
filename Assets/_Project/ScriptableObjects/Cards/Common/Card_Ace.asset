@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47a1f429057d8a42a2347b51e1c1f24, type: 3}
   m_Name: Card_Ace
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: "\xC1s"
-  value: 11
+  cardName: 1
+  cardSprite: {fileID: 0}
+  value: 1
   isAce: 1
