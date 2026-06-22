@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Card_Queen
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Dama
-  value: 10
+  cardSprite: {fileID: 0}
+  value: 12
   isAce: 0

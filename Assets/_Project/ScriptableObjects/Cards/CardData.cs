@@ -7,7 +7,7 @@ public class CardData : ScriptableObject
 
     [Header("IdCarta")]
     public string cardName; //D� nome � carta
-    public Sprite cardSprite; //Para escolher o sprite da cartinha
+    //public Sprite cardSprite; //Para escolher o sprite da cartinha
     
 
     [Header("Valor")]
