@@ -15,7 +15,7 @@ public class CardScript : MonoBehaviour
     void Start()
     {
         cardData = deck.GiveCard();
-        Debug.Log(cardData.value);
+        //Debug.Log(cardData.value);
         cardSprite.GetComponent<Image>().sprite = deck.cardSprites[cardData.cardID];
     }
 
