@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Card_2
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 2
+  cardSprite: {fileID: 0}
   value: 2
   isAce: 0

@@ -1,0 +1,28 @@
+using System;
+using UnityEngine.UI;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+public class CardScript : MonoBehaviour
+{
+    [SerializeField]private CardData cardData;
+
+    public GameObject image;
+    public DeckScript deck;
+
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        cardData = deck.randomGenerate();
+        image.GetComponent<Image>().sprite = deck.cardSprites[cardData.value];
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+
+}
