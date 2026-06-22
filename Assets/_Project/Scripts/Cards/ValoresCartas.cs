@@ -16,6 +16,11 @@ public class ValoresCartas : MonoBehaviour
     [Header("Verso")]
     [SerializeField] private GameObject verso;
 
+    private void OnEnable()
+    {
+        //this.gameObject.GetComponentInChildren<Image>().sprite = 
+    }
+
 
     public void SetId(int id)
     {
@@ -45,6 +50,11 @@ public class ValoresCartas : MonoBehaviour
     public int GetValue()
     {
         return value;
+    }
+
+    public GameObject GetVerso()
+    {
+        return verso;
     }
 
     public void AtivarOuDesativarVerso()
