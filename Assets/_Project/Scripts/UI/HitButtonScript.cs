@@ -3,7 +3,7 @@ using UnityEngine;
 public class HitButtonScript : MonoBehaviour
 {
     [SerializeField] private GameObject cardSpace;
-    [SerializeField] private GameObject cardPrfab;
+    [SerializeField] private GameObject cardPrefab;
     private int cardCount = 0;
     [SerializeField] private int cardCountLimit = 13;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,7 +22,7 @@ public class HitButtonScript : MonoBehaviour
     {
         if (cardCount < cardCountLimit)
         {
-            Instantiate(cardPrfab, cardSpace.transform);
+            Instantiate(cardPrefab, cardSpace.transform);
             cardCount++;
         }
     }
