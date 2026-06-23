@@ -31,7 +31,7 @@ public class CardScript : MonoBehaviour
     {
         if (isFliped)
         {
-            cardSprite.GetComponent<Image>().sprite = deckScript.cardSprites[0];
+            cardSprite.GetComponent<Image>().sprite = deckScript.cardBack;
         }
         else
         {

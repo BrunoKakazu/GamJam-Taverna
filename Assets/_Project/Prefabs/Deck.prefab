@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd97bfca61367945a8809677526db33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeckScript
+  cardBack: {fileID: -8246103488371625927, guid: 438547f9f61cf994a92130bc91ab8ed6, type: 3}
   cardSprites:
   - {fileID: -8246103488371625927, guid: 438547f9f61cf994a92130bc91ab8ed6, type: 3}
   - {fileID: 7219650766138810423, guid: cbab9fab40ce75144a28b9705aaa598b, type: 3}

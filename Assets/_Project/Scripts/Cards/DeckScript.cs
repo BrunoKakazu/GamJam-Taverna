@@ -4,13 +4,14 @@ using System.Linq;
 
 public class DeckScript : MonoBehaviour
 {
+    public Sprite cardBack;
     public List<Sprite> cardSprites;
     public List<CardData> cardDatas;
     int currentIndex = 0;
 
     void Awake()
     {
-        for (int i = 1; i < 40; i++)
+        for (int i = 13; i < 52; i++)
         {
             cardDatas.Add(new CardData());
             cardDatas[i].cardID = i;
