@@ -4,19 +4,33 @@ using System.Linq;
 
 public class DeckScript : MonoBehaviour
 {
+    public Sprite cardBack;
     public List<Sprite> cardSprites;
     public List<CardData> cardDatas;
     int currentIndex = 0;
 
     void Awake()
     {
+        for (int i = 13; i < 52; i++)
+        {
+            cardDatas.Add(new CardData());
+            cardDatas[i].cardID = i;
+            cardDatas[i].value = (i % 13) + 1;
+            if (cardDatas[i].value == 1)
+                cardDatas[i].isAce = true;
+            
+        }
+
         currentIndex = 0;
         Shuffle();
 
     }
     void Start()
     {
-        Debug.Log(currentIndex);
+        foreach (CardData card in cardDatas)
+        {
+            Debug.Log(card.cardID);
+        }
     }
 
     // Update is called once per frame
