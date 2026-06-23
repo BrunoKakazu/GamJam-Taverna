@@ -10,13 +10,26 @@ public class DeckScript : MonoBehaviour
 
     void Awake()
     {
+        for (int i = 1; i < 40; i++)
+        {
+            cardDatas.Add(new CardData());
+            cardDatas[i].cardID = i;
+            cardDatas[i].value = (i % 13) + 1;
+            if (cardDatas[i].value == 1)
+                cardDatas[i].isAce = true;
+            
+        }
+
         currentIndex = 0;
         Shuffle();
 
     }
     void Start()
     {
-        Debug.Log(currentIndex);
+        foreach (CardData card in cardDatas)
+        {
+            Debug.Log(card.cardID);
+        }
     }
 
     // Update is called once per frame
