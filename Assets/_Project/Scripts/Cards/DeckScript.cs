@@ -11,45 +11,36 @@ public class DeckScript : MonoBehaviour
 
     void Awake()
     {
-        for (int i = 13; i < 52; i++)
-        {
-            cardDatas.Add(new CardData());
-            cardDatas[i].cardID = i;
-            cardDatas[i].value = (i % 13) + 1;
-            if (cardDatas[i].value == 1)
-                cardDatas[i].isAce = true;
-            
-        }
-
+        CreateDeck();
         currentIndex = 0;
         Shuffle();
-
-    }
-    void Start()
-    {
-        foreach (CardData card in cardDatas)
-        {
-            Debug.Log(card.cardID);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public CardData GiveCard()
     {
         if (currentIndex >= cardDatas.Count)
-    {
-        Debug.LogWarning("Baralho esgotado");
-    }
-        Debug.Log(currentIndex);
+        {
+            Debug.LogWarning("Baralho esgotado");
+        }
+        //Debug.Log(currentIndex);
         CardData cardGiven = cardDatas[currentIndex];
         currentIndex++;
         return cardGiven;
+    }
 
+    public void CreateDeck()
+    {
+        for (int i = 13; i < 52; i++)
+        {
+            cardDatas.Add(ScriptableObject.CreateInstance<CardData>());
+            cardDatas[i].cardID = i;
+            cardDatas[i].value = (i % 10) + 1;
+            cardDatas[i].cardSprite = cardSprites[cardDatas[i].cardID];
+            if (cardDatas[i].value == 1)
+                cardDatas[i].isAce = true;
+            
+        }
+        
     }
 
     public void Shuffle()

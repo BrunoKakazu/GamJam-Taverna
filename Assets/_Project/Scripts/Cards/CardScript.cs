@@ -1,43 +1,41 @@
 using System;
 using UnityEngine.UI;
 using UnityEngine;
-using Random = UnityEngine.Random;
+
 
 public class CardScript : MonoBehaviour
 {
     [SerializeField] private CardData cardData;
-
-    [SerializeField] private GameObject cardSprite;
-    [SerializeField] private DeckScript deckScript;
-
+    private Sprite cardSprite;
+    private DeckScript deckScript;
     [SerializeField] private bool isFliped = false;
 
     void Awake()
     {
         deckScript = FindObjectsByType<DeckScript>(FindObjectsSortMode.None)[0];
+        cardSprite = gameObject.GetComponent<Image>().sprite;
+        CreateCard();
     }
-
-    void Start()
-    {   
-        cardData = deckScript.GiveCard();
-        cardSprite.GetComponent<Image>().sprite = deckScript.cardSprites[cardData.cardID];
-    }
-
     void Update()
     {
-        CardFlip();
+        //CardFlip();
     }
-    private void CardFlip()
+    private void CardFlip() // Metodo para flipar a carta
     {
         if (isFliped)
-        {
-            cardSprite.GetComponent<Image>().sprite = deckScript.cardBack;
-        }
+            cardSprite = deckScript.cardBack;
         else
-        {
-            cardSprite.GetComponent<Image>().sprite = deckScript.cardSprites[cardData.cardID];
-        }
+            cardSprite = deckScript.cardSprites[cardData.cardID];
     }
+    public void CreateCard() // Metodo para "criar a carta" 
+    {
+        cardData = deckScript.GiveCard(); // Da todas as informaçoes da carta
+        cardSprite = cardData.cardSprite;
+    }
+    public void CreateCard(CardData cardData) // Metodo para "criar a carta" 
+    {
+        cardData = deckScript.GiveCard(); // Da todas as informaçoes da carta
+        cardSprite = cardData.cardSprite;
 
-
+    }
 }
