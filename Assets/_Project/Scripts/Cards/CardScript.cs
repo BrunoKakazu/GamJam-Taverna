@@ -17,9 +17,9 @@ public class CardScript : MonoBehaviour
     }
     void Update()
     {
-        //CardFlip();
+
     }
-    private void CardFlip() // Metodo para flipar a carta
+    public void CardFlip() // Metodo para flipar a carta
     {
         if (isFliped)
             image.sprite = deckScript.cardBack;
@@ -28,7 +28,6 @@ public class CardScript : MonoBehaviour
     }
     public void CreateCard(CardData cardData) // Metodo para "criar a carta" 
     {
-        Debug.Log("Olaar");
         this.cardData = cardData;
         image.sprite = cardData.cardSprite;
     }

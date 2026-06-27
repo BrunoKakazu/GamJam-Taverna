@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Card_", menuName = "Scriptable Objects/Card/Common")]
+[CreateAssetMenu(fileName = "Card", menuName = "Scriptable Objects/Card/Common")]
 public class CardData : ScriptableObject
 {
     [Header("IdCarta")]

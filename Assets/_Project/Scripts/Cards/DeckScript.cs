@@ -13,7 +13,6 @@ public class DeckScript : MonoBehaviour
     void Awake()
     {
         CreateDeck();
-        currentIndex = 0;
         Shuffle();
     }
 
@@ -33,16 +32,23 @@ public class DeckScript : MonoBehaviour
     {
         for (int i = 0; i < 52; i++)
         {
-            cardDatas.Add(new CardData());
+            CardData card = ScriptableObject.CreateInstance<CardData>();
+            card.cardID = i;
+            card.value = (i % 10) + 1;
+            card.cardSprite = cardSprites[i];
+            card.prefab = cardPrefab;
+            card.isAce = card.value == 1;
+            cardDatas.Add(card);
+            /*
             cardDatas[i].cardID = i;
             cardDatas[i].value = (i % 10) + 1;
             cardDatas[i].cardSprite = cardSprites[cardDatas[i].cardID];
             cardDatas[i].prefab = cardPrefab; 
             if (cardDatas[i].value % 10 == 0)
                 cardDatas[i].isAce = true;
-            
+            */
         }
-        
+        currentIndex = 0;
     }
 
     public void Shuffle()
