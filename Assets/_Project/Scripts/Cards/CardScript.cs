@@ -6,15 +6,14 @@ using UnityEngine;
 public class CardScript : MonoBehaviour
 {
     [SerializeField] private CardData cardData;
-    private Sprite cardSprite;
+    private Image image;
     private DeckScript deckScript;
     [SerializeField] private bool isFliped = false;
 
     void Awake()
     {
         deckScript = FindObjectsByType<DeckScript>(FindObjectsSortMode.None)[0];
-        cardSprite = gameObject.GetComponent<Image>().sprite;
-        CreateCard();
+        image = GetComponent<Image>();
     }
     void Update()
     {
@@ -23,19 +22,15 @@ public class CardScript : MonoBehaviour
     private void CardFlip() // Metodo para flipar a carta
     {
         if (isFliped)
-            cardSprite = deckScript.cardBack;
+            image.sprite = deckScript.cardBack;
         else
-            cardSprite = deckScript.cardSprites[cardData.cardID];
-    }
-    public void CreateCard() // Metodo para "criar a carta" 
-    {
-        cardData = deckScript.GiveCard(); // Da todas as informaçoes da carta
-        cardSprite = cardData.cardSprite;
+            image.sprite = cardData.cardSprite;
     }
     public void CreateCard(CardData cardData) // Metodo para "criar a carta" 
     {
-        cardData = deckScript.GiveCard(); // Da todas as informaçoes da carta
-        cardSprite = cardData.cardSprite;
-
+        Debug.Log("Olaar");
+        this.cardData = cardData;
+        image.sprite = cardData.cardSprite;
     }
+
 }

@@ -10,19 +10,21 @@ public class GameMenagerScript : MonoBehaviour
     [SerializeField] private GameObject playerHandArea;
     [SerializeField] private GameObject enemyHandArea;
     [SerializeField] private GameObject cardPrefab;
+    [SerializeField] private GameObject cardBackPrefab;
     [SerializeField] private List<CardData> playerHand;
     [SerializeField] private List<CardData> enemyHand;
     private int handSize = 2;
 
+    private CardScript cardScript;
+
     void Start()
     {
         deckScript = FindObjectsByType<DeckScript>(FindObjectsSortMode.None)[0];
-
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             GiveHands();
         }
@@ -30,20 +32,33 @@ public class GameMenagerScript : MonoBehaviour
 
     public void GiveHands()
     {
+        GiveEnemyHand();
+        GivePlayerHand();        
+    }
+
+    private void GivePlayerHand()
+    {
         for (int i = 0; i < handSize; i++)
         {
-            playerHand.Add(deckScript.GiveCard());
-            enemyHand.Add(deckScript.GiveCard());
+            playerHand.Add(deckScript.GiveCardData());
         }
+        for (int i = 0; i < handSize; i++)
+        {
+            GameObject cardObject = Instantiate(playerHand[i].prefab, playerHandArea.transform);
+            cardObject.GetComponent<CardScript>().CreateCard(playerHand[i]);
+        }
+    }
+    private void GiveEnemyHand(){
 
-        Instantiate(cardPrefab);
+        for (int i = 0; i < handSize; i++)
+        {
+            enemyHand.Add(deckScript.GiveCardData());
+        }
 
         for(int i = 0; i < handSize; i++)
         {
-            Instantiate(playerHand[i], playerHandArea.transform);
-            Instantiate(enemyHand[i], enemyHandArea.transform);
-            
+            Instantiate(cardBackPrefab, enemyHandArea.transform);
         }
-        
     }
+
 }

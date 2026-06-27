@@ -285,4 +285,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HitButtonScript
   cardSpace: {fileID: 0}
   cardPrefab: {fileID: 3510661329647886847, guid: 0d63683407ed15f4d935a5d094003050, type: 3}
+  deckScript: {fileID: 0}
   cardCountLimit: 13

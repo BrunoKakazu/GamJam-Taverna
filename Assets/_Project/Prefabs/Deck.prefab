@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd97bfca61367945a8809677526db33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeckScript
+  cardPrefab: {fileID: 3510661329647886847, guid: 0d63683407ed15f4d935a5d094003050, type: 3}
   cardBack: {fileID: -8246103488371625927, guid: 438547f9f61cf994a92130bc91ab8ed6, type: 3}
   cardSprites:
   - {fileID: -8246103488371625927, guid: 438547f9f61cf994a92130bc91ab8ed6, type: 3}
@@ -143,17 +144,4 @@ MonoBehaviour:
   - {fileID: -7353156081931564349, guid: 537ac55a6c2bb41438dab568f9e45e1a, type: 3}
   - {fileID: -3644031783054025470, guid: c0ab680754aa6cf4c9b231ee7c849da2, type: 3}
   - {fileID: 4282747062302522660, guid: 7f0f4f6f77a90f04f97e0755edf68be5, type: 3}
-  cardDatas:
-  - {fileID: 11400000, guid: 2e917165ecb7b984d82ca83a4749648f, type: 2}
-  - {fileID: 11400000, guid: df57e63b802ec3244819b2c98d1ef310, type: 2}
-  - {fileID: 11400000, guid: d3b8320ae50704248954570ffa672d89, type: 2}
-  - {fileID: 11400000, guid: a50cae2f3b53d5c4185da07059e2d60f, type: 2}
-  - {fileID: 11400000, guid: 97d35e89d341f3e409ee247fdb74d81b, type: 2}
-  - {fileID: 11400000, guid: 1ae2ef6d19406f9419173762838f65a1, type: 2}
-  - {fileID: 11400000, guid: d24436bdf9621774da0127c029c7a6e4, type: 2}
-  - {fileID: 11400000, guid: ea01dbb14428a4b43ac5d39abc688be8, type: 2}
-  - {fileID: 11400000, guid: b4e6008f66fb5444a97ebe440df296c1, type: 2}
-  - {fileID: 11400000, guid: e87a8042068e2ee4997973a759c37bb7, type: 2}
-  - {fileID: 11400000, guid: 19891c631ea96de459aee22fd6d2fef9, type: 2}
-  - {fileID: 11400000, guid: bfb1965eceb97b7478274ca406b2cc0a, type: 2}
-  - {fileID: 11400000, guid: 971160bca370bf046b68a6a092ab1ba2, type: 2}
+  cardDatas: []

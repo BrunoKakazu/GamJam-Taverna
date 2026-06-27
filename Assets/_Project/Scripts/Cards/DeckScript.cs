@@ -4,6 +4,7 @@ using System.Linq;
 
 public class DeckScript : MonoBehaviour
 {
+    public GameObject cardPrefab;
     public Sprite cardBack;
     public List<Sprite> cardSprites;
     public List<CardData> cardDatas;
@@ -16,27 +17,28 @@ public class DeckScript : MonoBehaviour
         Shuffle();
     }
 
-    public CardData GiveCard()
+    public CardData GiveCardData()
     {
         if (currentIndex >= cardDatas.Count)
         {
             Debug.LogWarning("Baralho esgotado");
         }
-        //Debug.Log(currentIndex);
         CardData cardGiven = cardDatas[currentIndex];
         currentIndex++;
+        Debug.Log(currentIndex);
         return cardGiven;
     }
 
     public void CreateDeck()
     {
-        for (int i = 13; i < 52; i++)
+        for (int i = 0; i < 52; i++)
         {
-            cardDatas.Add(ScriptableObject.CreateInstance<CardData>());
+            cardDatas.Add(new CardData());
             cardDatas[i].cardID = i;
             cardDatas[i].value = (i % 10) + 1;
             cardDatas[i].cardSprite = cardSprites[cardDatas[i].cardID];
-            if (cardDatas[i].value == 1)
+            cardDatas[i].prefab = cardPrefab; 
+            if (cardDatas[i].value % 10 == 0)
                 cardDatas[i].isAce = true;
             
         }
