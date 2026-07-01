@@ -28,25 +28,19 @@ public class DeckScript : MonoBehaviour
         return cardGiven;
     }
 
-    public void CreateDeck()
+    private void CreateDeck()
     {
         for (int i = 0; i < 52; i++)
         {
             CardData card = ScriptableObject.CreateInstance<CardData>();
             card.cardID = i;
-            card.value = (i % 10) + 1;
+            int valueCheck = (i % 13) + 1;
+            card.value = valueCheck > 10 ? 10 : valueCheck;
             card.cardSprite = cardSprites[i];
             card.prefab = cardPrefab;
-            card.isAce = card.value == 1;
+            card.isAce = valueCheck == 1;
             cardDatas.Add(card);
-            /*
-            cardDatas[i].cardID = i;
-            cardDatas[i].value = (i % 10) + 1;
-            cardDatas[i].cardSprite = cardSprites[cardDatas[i].cardID];
-            cardDatas[i].prefab = cardPrefab; 
-            if (cardDatas[i].value % 10 == 0)
-                cardDatas[i].isAce = true;
-            */
+
         }
         currentIndex = 0;
     }

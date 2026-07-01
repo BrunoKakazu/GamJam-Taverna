@@ -21,10 +21,16 @@ public class CardScript : MonoBehaviour
     }
     public void CardFlip() // Metodo para flipar a carta
     {
-        if (isFliped)
+        if (!isFliped)
+        {
             image.sprite = deckScript.cardBack;
+            isFliped = true;
+        }
         else
+        {
             image.sprite = cardData.cardSprite;
+            isFliped = false;
+        }
     }
     public void CreateCard(CardData cardData) // Metodo para "criar a carta" 
     {

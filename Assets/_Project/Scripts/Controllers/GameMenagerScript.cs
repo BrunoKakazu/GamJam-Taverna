@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -12,17 +13,17 @@ public class GameMenagerScript : MonoBehaviour
     [SerializeField] private GameObject enemyHandArea;
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private GameObject cardBackPrefab;
+    [SerializeField] private TextMeshProUGUI playerHandValue;
     [SerializeField] private List<CardData> playerHand;
     [SerializeField] private List<CardData> enemyHand;
-    private int handSize = 2;
-    [SerializeField] private int currentHandSize = 0;
-    private CardScript cardScript;
+    private int playerHandSize = 0;
+    private int enemyHandSize = 0;
+    private bool isGameStarted = false;
+
 
     void Start()
     {
         deckScript = FindObjectsByType<DeckScript>(FindObjectsSortMode.None)[0];
-        playerHand = new List<CardData>(handSize);
-        enemyHand = new List<CardData>(handSize);
     }
     void Update()
     {
@@ -30,38 +31,73 @@ public class GameMenagerScript : MonoBehaviour
         {
             GiveHands();
         }
+
+        DisplayHandValue();
     }
     public void GiveHands()
     {
         GiveEnemyHand();
-        GivePlayerHand();        
+        GivePlayerHand();
+        isGameStarted = true;
     }
     private void GivePlayerHand()
     {
-        for (int i = 0; i < handSize; i++)
+        if (isGameStarted)
         {
             playerHand.Add(deckScript.GiveCardData());
-            currentHandSize++;
+            GameObject cardObject = Instantiate(playerHand[playerHandSize].prefab, playerHandArea.transform);
+            cardObject.GetComponent<CardScript>().CreateCard(playerHand[playerHandSize]);
+            playerHandSize++;
         }
-
-        for (int i = 0; i < handSize; i++)
+        else
         {
-            GameObject cardObject = Instantiate(playerHand[i].prefab, playerHandArea.transform);
-            cardObject.GetComponent<CardScript>().CreateCard(playerHand[i]);
+            for (int i = 0; i < 2; i++)
+            {
+                playerHand.Add(deckScript.GiveCardData());
+            
+                GameObject cardObject = Instantiate(playerHand[i].prefab, playerHandArea.transform);
+                cardObject.GetComponent<CardScript>().CreateCard(playerHand[i]);
+                if (i == 0)
+                    cardObject.GetComponent<CardScript>().CardFlip();
+                playerHandSize++;
+            }
         }
 
     }
     private void GiveEnemyHand(){
-
-        for (int i = 0; i < handSize; i++)
+        if (isGameStarted)
         {
             enemyHand.Add(deckScript.GiveCardData());
+            GameObject cardObject = Instantiate(enemyHand[enemyHandSize].prefab, enemyHandArea.transform);
+            cardObject.GetComponent<CardScript>().CreateCard(enemyHand[enemyHandSize]);
+            enemyHandSize++;
+        }
+        else
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                enemyHand.Add(deckScript.GiveCardData());
+
+                GameObject cardObject = Instantiate(enemyHand[i].prefab, enemyHandArea.transform);
+                cardObject.GetComponent<CardScript>().CreateCard(enemyHand[i]);
+                if (i == 0)
+                    cardObject.GetComponent<CardScript>().CardFlip();
+                enemyHandSize++;
+            }
         }
 
-        for(int i = 0; i < handSize; i++)
+    }
+
+    private void DisplayHandValue()
+    {
+        int displayValue = 0;
+
+        for (int i = 1; i < playerHand.Count; i++)
         {
-            Instantiate(cardBackPrefab, enemyHandArea.transform);
+            displayValue += playerHand[i].value;
         }
+
+        playerHandValue.text = $"Hand value: {displayValue}";
     }
 
 }
