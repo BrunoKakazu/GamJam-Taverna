@@ -15,10 +15,7 @@ public class CardScript : MonoBehaviour
         deckScript = FindObjectsByType<DeckScript>(FindObjectsSortMode.None)[0];
         image = GetComponent<Image>();
     }
-    void Update()
-    {
 
-    }
     public void CardFlip() // Metodo para flipar a carta
     {
         if (!isFliped)
