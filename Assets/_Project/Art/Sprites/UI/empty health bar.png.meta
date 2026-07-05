@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: acdbb533e6f925b4a999fae7d8bfeba8
+guid: 0933d9317f63c5d46b66d7772cb3c534
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1518667436007288286
-    second: botoes 2_0
-  - first:
-      213: 5252350102912660199
-    second: botoes 2_1
+      213: 1385329366819478976
+    second: empty health bar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -99,43 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: botoes 2_0
+      name: empty health bar_0
       rect:
         serializedVersion: 2
-        x: 171
-        y: 342
-        width: 265
-        height: 85
+        x: 0
+        y: 1
+        width: 128
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 22215d0630c9ceae0800000000000000
-      internalID: -1518667436007288286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botoes 2_1
-      rect:
-        serializedVersion: 2
-        x: 171
-        y: 194
-        width: 265
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7e27818279814e840800000000000000
-      internalID: 5252350102912660199
+      spriteID: 0cd113628bda93310800000000000000
+      internalID: 1385329366819478976
       vertices: []
       indices: 
       edges: []
@@ -186,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      botoes 2_0: -1518667436007288286
-      botoes 2_1: 5252350102912660199
+      empty health bar_0: 1385329366819478976
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
