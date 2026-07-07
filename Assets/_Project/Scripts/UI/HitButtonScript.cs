@@ -3,6 +3,7 @@ using UnityEngine;
 public class HitButtonScript : MonoBehaviour
 {
     [SerializeField] private GameMenagerScript GMScript;
+    public bool hasGivenCards = false;
 
     void Awake()
     {
@@ -11,5 +12,6 @@ public class HitButtonScript : MonoBehaviour
     public void PullCard()
     {
         GMScript.GivePlayerCard();
+        hasGivenCards = true;
     }
 }

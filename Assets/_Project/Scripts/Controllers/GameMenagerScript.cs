@@ -1,24 +1,29 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.XR;
+
 
 public class GameMenagerScript : MonoBehaviour
 {
-    private DeckScript deckScript;
+    [Header("Hand areas: ")]
     [SerializeField] private GameObject playerHandArea;
     [SerializeField] private GameObject enemyHandArea;
-    [SerializeField] private GameObject cardPrefab;
-    [SerializeField] private GameObject cardBackPrefab;
-    [SerializeField] private TextMeshProUGUI playerHandValue;
+
+    [Header("Hand cards: ")]
     [SerializeField] private List<CardData> playerHand;
     [SerializeField] private List<CardData> enemyHand;
     private int playerHandSize = 0;
     private int enemyHandSize = 0;
+
+    [Header("Card sprites: ")]
+    [SerializeField] private GameObject cardPrefab;
+    [SerializeField] private GameObject cardBackPrefab;
+
+    [SerializeField] private TextMeshProUGUI playerHandValue;
+    private DeckScript deckScript;
+
     private bool isGameStarted = false;
+
     private bool isRevealed = false;
 
 
@@ -28,7 +33,7 @@ public class GameMenagerScript : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (!isGameStarted)
         {
             GiveHands();
         }
@@ -93,7 +98,6 @@ public class GameMenagerScript : MonoBehaviour
         }
 
     }
-
     private void DisplayHandValue()
     {
         int displayValue = 0;
@@ -118,8 +122,7 @@ public class GameMenagerScript : MonoBehaviour
 
         }
     }
-
-    void RevealCards()
+    public void RevealCards()
     {
         enemyHandArea.transform.GetChild(0).gameObject.GetComponent<CardScript>().CardFlip();
         playerHandArea.transform.GetChild(0).gameObject.GetComponent<CardScript>().CardFlip();
@@ -127,4 +130,22 @@ public class GameMenagerScript : MonoBehaviour
 
     }
 
+    public int GetPlayerDamage()
+    {
+        int damage = 0;
+        for (int i = 0; i < playerHand.Count; ++i)
+        {
+            damage += playerHand[i].value;
+        }
+        return damage;
+    }
+    public int GetEnemyDamage()
+    {
+        int damage = 0;
+        for (int i = 0; i < enemyHand.Count; ++i)
+        {
+            damage += enemyHand[i].value;
+        }
+        return damage;
+    }
 }

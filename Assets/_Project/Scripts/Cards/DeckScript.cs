@@ -24,7 +24,7 @@ public class DeckScript : MonoBehaviour
         }
         CardData cardGiven = cardDatas[currentIndex];
         currentIndex++;
-        Debug.Log(currentIndex);
+        // Debug.Log(currentIndex);
         return cardGiven;
     }
 
