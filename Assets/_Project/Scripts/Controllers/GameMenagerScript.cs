@@ -114,7 +114,7 @@ public class GameMenagerScript : MonoBehaviour
         {
             if (playerHand[i].isAce && displayValue < 21)
             {
-                displayValue += 11;
+                displayValue += 10;
             }
             displayValue += playerHand[i].value;
         }
