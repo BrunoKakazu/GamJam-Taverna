@@ -16,5 +16,6 @@ public class CardData : ScriptableObject
 
     public GameObject prefab;
 
+
     
 }

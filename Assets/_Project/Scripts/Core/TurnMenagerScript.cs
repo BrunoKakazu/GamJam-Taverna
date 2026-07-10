@@ -114,8 +114,10 @@ public class TurnMenagerScript : MonoBehaviour
     {
         gameMenagerScript.RevealCards();
 
-        playerScript.TakeDamage(gameMenagerScript.GetEnemyDamage());
-        enemyScript.TakeDamage(gameMenagerScript.GetPlayerDamage());
+        if (gameMenagerScript.GetEnemyDamage() <= 21)
+            playerScript.TakeDamage(gameMenagerScript.GetEnemyDamage());
+        if (gameMenagerScript.GetPlayerDamage() <= 21)
+            enemyScript.TakeDamage(gameMenagerScript.GetPlayerDamage());
 
         Debug.Log($"Você recebeu: {gameMenagerScript.GetEnemyDamage()} de dano...");
         Debug.Log($"Você deu: {gameMenagerScript.GetPlayerDamage()} de dano...");

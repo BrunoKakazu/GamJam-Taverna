@@ -8,6 +8,7 @@ public class GameMenagerScript : MonoBehaviour
     [Header("Hand areas: ")]
     [SerializeField] private GameObject playerHandArea;
     [SerializeField] private GameObject enemyHandArea;
+    [SerializeField] private Transform deck;
 
     [Header("Hand cards: ")]
     [SerializeField] private List<CardData> playerHand;
@@ -21,6 +22,8 @@ public class GameMenagerScript : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI playerHandValue;
     private DeckScript deckScript;
+
+    [SerializeField] private AnimationMenagerScript animScript;
 
     private bool isGameStarted = false;
 
@@ -38,11 +41,6 @@ public class GameMenagerScript : MonoBehaviour
             GiveHands();
         }
 
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            RevealCards();
-        }
-
         DisplayHandValue();
     }
     public void GiveHands() 
@@ -56,8 +54,10 @@ public class GameMenagerScript : MonoBehaviour
         if (isGameStarted) // executa essa parte so depois da mao inicial ter sido distribuida
         {
             playerHand.Add(deckScript.GiveCardData());
-            GameObject cardObject = Instantiate(playerHand[playerHandSize].prefab, playerHandArea.transform);
+            GameObject cardObject = Instantiate(playerHand[playerHandSize].prefab, deck);
             cardObject.GetComponent<CardScript>().CreateCard(playerHand[playerHandSize]);
+            cardObject.GetComponent<CardScript>().CardFlip();
+            animScript.SpawnAnimation(cardObject, playerHandArea.transform); // Faz a animaçao da carta indo até a mão
             playerHandSize++;
         }
         else // executa o loop para dar a mao inicial (para q a primeira carta sempre fique virada para baixo)
@@ -65,10 +65,10 @@ public class GameMenagerScript : MonoBehaviour
             for (int i = 0; i < 2; i++)
             {
                 playerHand.Add(deckScript.GiveCardData());
-            
-                GameObject cardObject = Instantiate(playerHand[i].prefab, playerHandArea.transform);
+                GameObject cardObject = Instantiate(playerHand[i].prefab, deck);
                 cardObject.GetComponent<CardScript>().CreateCard(playerHand[i]);
-                if (i == 0)
+                animScript.SpawnAnimation(cardObject, playerHandArea.transform); // Faz a animaçao da carta indo até a mão
+                if (i != 0)
                     cardObject.GetComponent<CardScript>().CardFlip();
                 playerHandSize++;
             }
@@ -79,8 +79,10 @@ public class GameMenagerScript : MonoBehaviour
         if (isGameStarted) // executa essa parte so depois da mao inicial ter sido distribuida
         {
             enemyHand.Add(deckScript.GiveCardData());
-            GameObject cardObject = Instantiate(enemyHand[enemyHandSize].prefab, enemyHandArea.transform);
+            GameObject cardObject = Instantiate(enemyHand[enemyHandSize].prefab, deck);
             cardObject.GetComponent<CardScript>().CreateCard(enemyHand[enemyHandSize]);
+            cardObject.GetComponent<CardScript>().CardFlip();
+            animScript.SpawnAnimation(cardObject, enemyHandArea.transform); // Faz a animaçao da carta indo até a mão
             enemyHandSize++;
         }
         else // executa o loop para dar a mao inicial (para q a primeira carta sempre fique virada para baixo)
@@ -88,10 +90,10 @@ public class GameMenagerScript : MonoBehaviour
             for (int i = 0; i < 2; i++)
             {
                 enemyHand.Add(deckScript.GiveCardData());
-
-                GameObject cardObject = Instantiate(enemyHand[i].prefab, enemyHandArea.transform);
+                GameObject cardObject = Instantiate(enemyHand[i].prefab, deck);
                 cardObject.GetComponent<CardScript>().CreateCard(enemyHand[i]);
-                if (i == 0)
+                animScript.SpawnAnimation(cardObject, enemyHandArea.transform);
+                if (i != 0)
                     cardObject.GetComponent<CardScript>().CardFlip();
                 enemyHandSize++;
             }
@@ -110,6 +112,10 @@ public class GameMenagerScript : MonoBehaviour
 
         for (int i = index; i < playerHand.Count; i++)
         {
+            if (playerHand[i].isAce && displayValue < 21)
+            {
+                displayValue += 11;
+            }
             displayValue += playerHand[i].value;
         }
 
@@ -124,17 +130,19 @@ public class GameMenagerScript : MonoBehaviour
     }
     public void RevealCards()
     {
-        enemyHandArea.transform.GetChild(0).gameObject.GetComponent<CardScript>().CardFlip();
-        playerHandArea.transform.GetChild(0).gameObject.GetComponent<CardScript>().CardFlip();
+        enemyHandArea.transform.GetChild(0).gameObject.GetComponent<CardScript>().CardFlip(true);
+        playerHandArea.transform.GetChild(0).gameObject.GetComponent<CardScript>().CardFlip(true);
         isRevealed = true;
-
     }
-
     public int GetPlayerDamage()
     {
         int damage = 0;
         for (int i = 0; i < playerHand.Count; ++i)
         {
+            if (playerHand[i].isAce && damage < 21)
+            {
+                damage += 11;
+            }
             damage += playerHand[i].value;
         }
         return damage;
