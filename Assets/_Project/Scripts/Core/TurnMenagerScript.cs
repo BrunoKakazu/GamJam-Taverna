@@ -3,9 +3,13 @@ using UnityEngine;
 public class TurnMenagerScript : MonoBehaviour
 {
     private bool isPlayerTurn = true;
-    private bool hasPlayerStayed = false;
     private bool isEnemyTurn = false;
+
+    private bool hasPlayerStayed = false;
     private bool hasEnemyStayed = false;
+    
+    private bool isDamageDealt = false;
+
     [SerializeField] private GameObject gameMenager;
     private GameMenagerScript gameMenagerScript;
 
@@ -23,23 +27,33 @@ public class TurnMenagerScript : MonoBehaviour
         hitBtnScript = hitBtn.GetComponent<HitButtonScript>();
         stayBtnScript = stayBtn.GetComponent<StayButtonScript>();
         gameMenagerScript = gameMenager.GetComponent<GameMenagerScript>();
+        hitBtn.SetActive(false);
+        stayBtn.SetActive(false);
     }
     void Update()
     {
-        if (hasPlayerStayed && hasEnemyStayed)
+        if (gameMenagerScript.isGameStarted)
         {
-            TurnResolve();
-        } else
-        {
-            if (isPlayerTurn && !hasPlayerStayed)
+            if (hasPlayerStayed && hasEnemyStayed)
             {
-                PlayerTurn();
-            }
+                TurnResolve();
+            } else
+            {
+                if (isPlayerTurn && !hasPlayerStayed)
+                {
+                    PlayerTurn();
+                }
 
-            if (isEnemyTurn && !hasEnemyStayed)
-            {
-                EnemyTurn();
+                if (isEnemyTurn && !hasEnemyStayed)
+                {
+                    EnemyTurn();
+                }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gameMenagerScript.GiveHands();
         }
 
     }
@@ -52,7 +66,7 @@ public class TurnMenagerScript : MonoBehaviour
         if (hitBtnScript.hasGivenCards) // Quando o player aperta o botao de HIT
         {
             
-            if (!hasEnemyStayed)
+            if (!hasEnemyStayed) // Se o inimigo tiver parado, o turno do player continua
             {
                 isPlayerTurn = false;
                 isEnemyTurn = true;
@@ -114,17 +128,36 @@ public class TurnMenagerScript : MonoBehaviour
     {
         gameMenagerScript.RevealCards();
 
-        if (gameMenagerScript.GetEnemyDamage() <= 21)
-            playerScript.TakeDamage(gameMenagerScript.GetEnemyDamage());
-        if (gameMenagerScript.GetPlayerDamage() <= 21)
-            enemyScript.TakeDamage(gameMenagerScript.GetPlayerDamage());
+        DealDamage();
 
-        Debug.Log($"Você recebeu: {gameMenagerScript.GetEnemyDamage()} de dano...");
-        Debug.Log($"Você deu: {gameMenagerScript.GetPlayerDamage()} de dano...");
+        if (Input.GetKeyDown(KeyCode.R))
+            EndRound();
+    }
+
+    private void DealDamage()
+    {
+        if (!isDamageDealt)
+        {
+            if (gameMenagerScript.GetEnemyDamage() <= 21)
+                playerScript.TakeDamage(gameMenagerScript.GetEnemyDamage());
+            if (gameMenagerScript.GetPlayerDamage() <= 21)
+                enemyScript.TakeDamage(gameMenagerScript.GetPlayerDamage());
+
+            Debug.Log($"Você recebeu: {gameMenagerScript.GetEnemyDamage()} de dano...");
+            Debug.Log($"Você deu: {gameMenagerScript.GetPlayerDamage()} de dano...");
+            isDamageDealt = true;
+        }
+    }
+
+    private void EndRound()
+    {
+        gameMenagerScript.Restart();
 
         stayBtnScript.hasStayed = false;
 
         hasPlayerStayed = false;
         hasEnemyStayed = false;
+
+        isDamageDealt = false;
     }
 }

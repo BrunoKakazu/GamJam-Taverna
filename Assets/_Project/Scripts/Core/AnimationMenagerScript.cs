@@ -2,7 +2,7 @@ using UnityEngine.UI;
 using UnityEngine;
 public class AnimationMenagerScript : MonoBehaviour
 {
-    private float animTime = 0.2f;
+    private float animTime = 0.4f;
     [SerializeField] Transform deckArea;
 
     //[SerializeField] private 

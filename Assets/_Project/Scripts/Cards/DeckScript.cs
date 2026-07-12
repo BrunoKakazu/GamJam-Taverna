@@ -6,9 +6,9 @@ public class DeckScript : MonoBehaviour
 {
     public GameObject cardPrefab;
     public Sprite cardBack;
+    public int currentIndex = 0;
     public List<Sprite> cardSprites;
     public List<CardData> cardDatas;
-    int currentIndex = 0;
 
     void Awake()
     {

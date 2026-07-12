@@ -21,26 +21,27 @@ public class GameMenagerScript : MonoBehaviour
     [SerializeField] private GameObject cardBackPrefab;
 
     [SerializeField] private TextMeshProUGUI playerHandValue;
+
     private DeckScript deckScript;
+    private AnimationMenagerScript animScript;
 
-    [SerializeField] private AnimationMenagerScript animScript;
-
-    private bool isGameStarted = false;
-
+    public bool isGameStarted = false;
     private bool isRevealed = false;
 
 
     void Start()
     {
         deckScript = FindObjectsByType<DeckScript>(FindObjectsSortMode.None)[0];
+        animScript = FindObjectsByType<AnimationMenagerScript>(FindObjectsSortMode.None)[0];
     }
     void Update()
     {
+        /*
         if (!isGameStarted)
         {
             GiveHands();
         }
-
+        */
         DisplayHandValue();
     }
     public void GiveHands() 
@@ -120,7 +121,10 @@ public class GameMenagerScript : MonoBehaviour
         }
 
         if (displayValue <= 21)
+        {
             playerHandValue.text = $"Hand value: {displayValue}";
+            playerHandValue.color = Color.white;
+        }
         else
         {
             playerHandValue.text = $"Hand value: {displayValue}";
@@ -130,9 +134,12 @@ public class GameMenagerScript : MonoBehaviour
     }
     public void RevealCards()
     {
-        enemyHandArea.transform.GetChild(0).gameObject.GetComponent<CardScript>().CardFlip(true);
-        playerHandArea.transform.GetChild(0).gameObject.GetComponent<CardScript>().CardFlip(true);
-        isRevealed = true;
+        if (!isRevealed)
+        {
+            enemyHandArea.transform.GetChild(0).gameObject.GetComponent<CardScript>().CardFlip(true);
+            playerHandArea.transform.GetChild(0).gameObject.GetComponent<CardScript>().CardFlip(true);
+            isRevealed = true;
+        }
     }
     public int GetPlayerDamage()
     {
@@ -155,5 +162,29 @@ public class GameMenagerScript : MonoBehaviour
             damage += enemyHand[i].value;
         }
         return damage;
+    }
+    public void Restart()
+    {
+        //Debug.Log($"player:{playerHandSize} enemy:{enemyHandSize}");
+        
+        // Destroi as cartas na mao do jogador
+        foreach(Transform card in playerHandArea.transform)
+        {
+            Destroy(card.gameObject);
+        }
+        // Destroi as cartas na mao do inimigo
+        foreach(Transform card in enemyHandArea.transform)
+        {
+            Destroy(card.gameObject);
+        }
+        // Limpa as cartas nas listas 
+        playerHand.Clear();
+        enemyHand.Clear();
+        // Retorna o index
+        playerHandSize = 0;
+        enemyHandSize = 0;
+        // Reseta os controladores
+        isGameStarted = false;
+        isRevealed = false;
     }
 }

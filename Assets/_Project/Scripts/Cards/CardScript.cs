@@ -46,6 +46,7 @@ public class CardScript : MonoBehaviour
     {
         this.cardData = cardData;
         image.sprite = cardData.cardSprite;
+        //Debug.Log($"Carta {cardData.cardID} criada");
     }
 
 }
